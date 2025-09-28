@@ -6,6 +6,21 @@
   }
 </script>
 <h1>Veo - Video Generation</h1>
+<!-- Input para la clave API debajo del título -->
+<p>
+  <input id="api-key-input" type="text" placeholder="Clave Api" />
+</p>
+<script>
+  // Guarda la clave API cada vez que el usuario la escribe
+  document.getElementById('api-key-input').addEventListener('input', function() {
+    localStorage.setItem('userApiKey', this.value);
+  });
+  // Si el usuario ya tiene una clave guardada, la muestra en el input al cargar la página
+  window.addEventListener('DOMContentLoaded', function() {
+    var apiKey = localStorage.getItem('userApiKey') || '';
+    document.getElementById('api-key-input').value = apiKey;
+  });
+</script>
 <p>Enter a prompt.</p>
 <p><textarea id="prompt-input" type="text" placeholder="Enter a prompt"></textarea></p>
 <p>Provide a conditioning image if the model supports it.</p>
